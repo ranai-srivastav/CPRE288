@@ -178,7 +178,6 @@ double bump_drive(autostruct_t *minVals, oi_t *sensor)
 {
     int centerAngle = 90;
     int angle = centerAngle - minVals->minAngle;
-    //const int angle_offset = 15;
     double total = 0;
     char isRight = 0;
 
