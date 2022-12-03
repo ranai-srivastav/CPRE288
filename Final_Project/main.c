@@ -1,13 +1,15 @@
-#include "movement.h"
 #include "Timer.h"
 #include "lcd.h"
 #include "open_interface.h"
 #include "button.h"
+#include "movement.h"
 #include "Our_Functions.h"
 #include "ping.h"
 #include "servo.h"
 #include "adc.h"
 #include "uart_extra_help.h"
+#include <math.h>
+//#include "Lab10_movement.h"
 
 volatile double dist_travelled = 0;
 
@@ -23,10 +25,18 @@ enum exit_condition
     BUMP_RIGHT
 };
 
+float linWidth(int startAngle, int endAngle, float objDist)
+{
+    radWidth = endAngle - startAngle;
+    linWidth = 2 * objDist * tan(radWidth / 2);
+
+    return linWidth;
+}
+
 void perp_to_edge(oi_t *sensor)
 {
     int i;
-    data *Scandata;
+    scan_data *Scandata;
     //double dist_travelled = 0;
     int Boundary_Detected = 0;
     int max_cm = 50;
