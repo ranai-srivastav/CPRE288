@@ -10,12 +10,19 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Our_Functions.obj" \
 "./Timer.obj" \
+"./adc.obj" \
 "./button.obj" \
+"./calibration.obj" \
 "./lcd.obj" \
 "./main.obj" \
+"./movement.obj" \
 "./open_interface.obj" \
+"./ping.obj" \
+"./servo.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
+"./uart_extra_help.obj" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -160,8 +167,8 @@ Final_Project.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Timer.obj" "button.obj" "lcd.obj" "main.obj" "open_interface.obj" "tm4c123gh6pm_startup_ccs.obj" 
-	-$(RM) "Timer.d" "button.d" "lcd.d" "main.d" "open_interface.d" "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "Our_Functions.obj" "Timer.obj" "adc.obj" "button.obj" "calibration.obj" "lcd.obj" "main.obj" "movement.obj" "open_interface.obj" "ping.obj" "servo.obj" "tm4c123gh6pm_startup_ccs.obj" "uart_extra_help.obj" 
+	-$(RM) "Our_Functions.d" "Timer.d" "adc.d" "button.d" "calibration.d" "lcd.d" "main.d" "movement.d" "open_interface.d" "ping.d" "servo.d" "tm4c123gh6pm_startup_ccs.d" "uart_extra_help.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
