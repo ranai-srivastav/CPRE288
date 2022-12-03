@@ -29,6 +29,7 @@ main.obj: C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.6.LTS/include/machine
 main.obj: ../uart_extra_help.h
 main.obj: ../Our_Functions.h
 main.obj: ../Our_Functions.h
+main.obj: ../calibration.h
 main.obj: ../button.h
 main.obj: ../ping.h
 main.obj: ../servo.h
@@ -91,6 +92,8 @@ C:/ti/ccs1200/ccs/tools/compiler/ti-cgt-arm_20.2.6.LTS/include/machine/_limits.h
 ../Our_Functions.h:
 
 ../Our_Functions.h:
+
+../calibration.h:
 
 ../button.h:
 

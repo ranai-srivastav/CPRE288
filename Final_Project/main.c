@@ -119,7 +119,7 @@ int main(void)
 //        timer_waitMillis(3000);
 //    }
 
-    perp_to_edge(sensor);
+    calibrate_wheels(sensor);
 
     oi_free(sensor);
 

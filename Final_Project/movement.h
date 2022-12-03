@@ -14,9 +14,10 @@
 #include <stdio.h>
 #include "uart_extra_help.h"
 #include "Our_Functions.h"
+#include "calibration.h"
 
 void move_forward(oi_t *sensor, int centimeters);
-double move_backward(oi_t *sensor, int centimeters);
+void move_backward(oi_t *sensor, int centimeters);
 void turn_clockwise(oi_t *sensor, float degrees);
 void turn_counterclockwise(oi_t *sensor, float degrees);
 double move_until_bump(oi_t *sensor, int max_cm);

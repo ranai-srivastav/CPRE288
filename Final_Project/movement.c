@@ -4,7 +4,7 @@ extern volatile double dist_travelled; //distance since last scan
 
 void move_forward(oi_t *sensor, int centimeters) {
     double sum = 0;
-    oi_setWheels(50, 50); // move forward; full speed
+    oi_setWheels(forward_RWP, forward_LWP); // move forward; full speed
     while (sum < centimeters*10) {
     oi_update(sensor);
     sum += sensor->distance;
@@ -21,29 +21,33 @@ void move_forward(oi_t *sensor, int centimeters) {
     oi_setWheels(0, 0); // stop
 }
 
-double move_backward(oi_t *sensor, int centimeters) {
-    double sum = 0;
-    oi_setWheels(-50, -50); // move forward; full speed
-    while (abs(sum) < centimeters*10) {
-    oi_update(sensor);
-    sum += sensor->distance;
+void move_backward(oi_t *sensor, int centimeters) {
 
-    if(uart_flag)
-            {
-                uart_flag = 0;
-                if((char)uart_data == 't')
+    double sum = 0;
+    oi_setWheels(-forward_RWP, -forward_LWP); // move forward; full speed
+
+    while (abs(sum) < centimeters*10)
+    {
+        oi_update(sensor);
+        sum += sensor->distance;
+
+        if(uart_flag)
                 {
-                    break;
+                    uart_flag = 0;
+                    if((char)uart_data == 't')
+                    {
+                        break;
+                    }
                 }
-            }
     }
+
     oi_setWheels(0, 0); // stop
-    return sum;
+    dist_travelled += (10 * sum); //increments distance traveled by
 }
 
 void turn_clockwise(oi_t *sensor, float degrees) {
     double sum = 0;
-    oi_setWheels(-50, 50); //Turn bot clockwise
+    oi_setWheels(c_RWP, c_LWP); //Turn bot clockwise
     while (sum < abs(degrees)) {
         oi_update(sensor);
         sum += abs(sensor->angle);
@@ -65,7 +69,7 @@ void turn_clockwise(oi_t *sensor, float degrees) {
 
 void turn_counterclockwise(oi_t *sensor, float degrees) {
     double sum = 0;
-    oi_setWheels(100, -100); //Turn bot clockwise
+    oi_setWheels(cc_RWP, cc_LWP); //Turn bot clockwise
     while (sum < abs(degrees)) {
         oi_update(sensor);
         sum += abs(sensor->angle);
@@ -86,7 +90,7 @@ void turn_counterclockwise(oi_t *sensor, float degrees) {
 double move_until_bump(oi_t *sensor, int max_cm)
 {
     double dist_travelled = 0;
-    oi_setWheels(150, 150); // move forward; full speed
+    oi_setWheels(forward_RWP, forward_LWP); // move forward; full speed
 
     while(!sensor->bumpLeft && !sensor->bumpRight && abs(dist_travelled) < max_cm)
     {
@@ -127,7 +131,7 @@ bool hasBumpedRight(oi_t *sensor)
 
 int Perp2Tape(oi_t *sensor)
 {
-    oi_setWheels(50, 50);
+    oi_setWheels(forward_RWP, forward_LWP);
     if((sensor->cliffLeftSignal > 2700) || (sensor->cliffRightSignal > 2700)) // Check for sensors detecting white tape, do nothing if neither detect anything
     {
         oi_update(sensor);
@@ -153,7 +157,7 @@ int Perp2Tape(oi_t *sensor)
 
         if(sensor->cliffLeftSignal < 2700 || sensor->cliffRightSignal < 2700) // If the correction causes one sensor to come off the tape, recall the function and try again
         {
-            oi_setWheels(-50, -50);
+            oi_setWheels(-forward_RWP, -forward_LWP);
             oi_update(sensor);
             timer_waitMillis(1000);
             oi_setWheels(0, 0);
@@ -163,7 +167,7 @@ int Perp2Tape(oi_t *sensor)
         else // Bot is perpendicular to tape, will now begin process of checking the perimeter of area
         {
             move_backward(sensor, 30);
-            turn_clockwise(sensor, 70);
+            turn_clockwise(sensor, 90);
             return 1;
 
         // Once bot is perpendicular to the tape, it will back up and turn 90 deg CW
@@ -199,7 +203,7 @@ void Perp2Hole(oi_t *sensor)
         */
 
         move_backward(sensor, 30);
-        turn_clockwise(sensor, 70);
+        turn_clockwise(sensor, 90);
 
 
     }
@@ -213,7 +217,7 @@ void TapeDrive(oi_t *sensor) // Function incomplete, should be similar to perp2e
 
     while(Boundary_Detected == 0)
     {
-       oi_setWheels(50, 50);
+       oi_setWheels(forward_RWP, forward_LWP);
 
        while(!sensor->bumpLeft && !sensor->bumpRight && abs(dist_travelled) < max_cm)
        {
@@ -231,9 +235,9 @@ void TapeDrive(oi_t *sensor) // Function incomplete, should be similar to perp2e
        if(sensor->bumpLeft || sensor->bumpRight)
        {
            move_backward(sensor, 10);
-           turn_clockwise(sensor, 50);
+           turn_clockwise(sensor, 90);
            move_forward(sensor, 30);
-           turn_counterclockwise(sensor, 65);
+           turn_counterclockwise(sensor, 90);
            move_forward(sensor, 15); //reverts input distance so total distance remains 200 cm
            oi_setWheels(0, 0);
        }
