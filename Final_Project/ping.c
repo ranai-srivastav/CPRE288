@@ -6,7 +6,6 @@
 volatile char flag = 0;
 volatile unsigned int risingEdge = 0;
 volatile unsigned int fallingEdge = 0;
-volatile int edge = 0;
 
 volatile int overflow_count = 0;
 
@@ -43,7 +42,7 @@ void ping_init(void)
     NVIC_PRI9_R     &= 0xFFFFFF0F;
     NVIC_PRI9_R     |= 0x00000020;
 
-    IntRegister(INT_TIMER3B, Timer3_handler);
+    IntRegister(INT_TIMER3B, ping_interrupt_handler);
     IntMasterEnable();
 }
 
@@ -71,7 +70,7 @@ void ping_interrupt_handler(void)
 
 }
 
-/*
+
 int ping_read(void)
 {
 //    unsigned int risingEdge = 0;
@@ -145,24 +144,6 @@ float ping_dist_est()
     return (speed*100.0 * ((totalCounts * clockPeriod) / 1000000000.0)/2.0);
 
 
-}
-*/
-void ping_read(){
-    TIMER3_IMR_R = 0x0; // Disable interrupts for Capture mode event
-    GPIO_PORTB_AFSEL_R &= 0xF7; // Forces pin 3 to use GPIO 0b1111_0111
-    GPIO_PORTB_DIR_R |= 0x08; //Forces a 1 to bit 3, setting pin 3 to output
-    GPIO_PORTB_DATA_R |= 0x08; // send trigger
-    timer_waitMillis(1);
-    GPIO_PORTB_DATA_R &= 0xF7; //Forces a 0 to bit 3
-    GPIO_PORTB_DIR_R &= 0xF7; //Forces a 0 to bit 3, setting pin 3 to input
-    GPIO_PORTB_AFSEL_R |= 0x08; //Sets pin 3 to input capture mode
-    TIMER3_ICR_R |= 0b10000000000; // Clears Capture mode event interrupts
-    TIMER3_IMR_R |= 0b10000000000; // enables interrupts for timer B capture mode event
-
-}
-void Timer3_handler(){
-    TIMER3_ICR_R |= 0b10000000000; //clears timer B capture mode event
-    edge ^= 1;
 }
 
 

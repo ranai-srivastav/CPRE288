@@ -14,9 +14,4 @@ void ping_interrupt_handler(void);
 
 float ping_dist_est();
 
-void ping_read();
-
-void Timer3_handler();
-
-
-#endif //PING_H
+#endif PING_H

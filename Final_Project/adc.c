@@ -24,9 +24,7 @@ int adc_read(void)
 {
     ADC0_PSSI_R |= 0b1000;
     while(~ADC0_RIS_R & 0b1000)
-    {
-        // WAIT!
-    }
+    {}
     ADC0_ISC_R |= 0b1000;
     return ADC0_SSFIFO3_R & 0xFFF;
 }
