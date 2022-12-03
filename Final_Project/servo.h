@@ -13,4 +13,4 @@ void servo_move(int degrees);
 
 
 
-#endif SERVO_H
+#endif /*SERVO_H*/
