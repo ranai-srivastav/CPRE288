@@ -9,7 +9,6 @@ CMD_SRCS += \
 ../tm4c123gh6pm.cmd 
 
 C_SRCS += \
-../Lab10_movement.c \
 ../Our_Functions.c \
 ../Timer.c \
 ../adc.c \
@@ -18,7 +17,6 @@ C_SRCS += \
 ../lcd.c \
 ../main.c \
 ../movement.c \
-../new_movement.c \
 ../open_interface.c \
 ../ping.c \
 ../servo.c \
@@ -28,7 +26,6 @@ C_SRCS += \
 ../uart_extra_help.c 
 
 C_DEPS += \
-./Lab10_movement.d \
 ./Our_Functions.d \
 ./Timer.d \
 ./adc.d \
@@ -37,7 +34,6 @@ C_DEPS += \
 ./lcd.d \
 ./main.d \
 ./movement.d \
-./new_movement.d \
 ./open_interface.d \
 ./ping.d \
 ./servo.d \
@@ -47,7 +43,6 @@ C_DEPS += \
 ./uart_extra_help.d 
 
 OBJS += \
-./Lab10_movement.obj \
 ./Our_Functions.obj \
 ./Timer.obj \
 ./adc.obj \
@@ -56,7 +51,6 @@ OBJS += \
 ./lcd.obj \
 ./main.obj \
 ./movement.obj \
-./new_movement.obj \
 ./open_interface.obj \
 ./ping.obj \
 ./servo.obj \
@@ -66,7 +60,6 @@ OBJS += \
 ./uart_extra_help.obj 
 
 OBJS__QUOTED += \
-"Lab10_movement.obj" \
 "Our_Functions.obj" \
 "Timer.obj" \
 "adc.obj" \
@@ -75,7 +68,6 @@ OBJS__QUOTED += \
 "lcd.obj" \
 "main.obj" \
 "movement.obj" \
-"new_movement.obj" \
 "open_interface.obj" \
 "ping.obj" \
 "servo.obj" \
@@ -85,7 +77,6 @@ OBJS__QUOTED += \
 "uart_extra_help.obj" 
 
 C_DEPS__QUOTED += \
-"Lab10_movement.d" \
 "Our_Functions.d" \
 "Timer.d" \
 "adc.d" \
@@ -94,7 +85,6 @@ C_DEPS__QUOTED += \
 "lcd.d" \
 "main.d" \
 "movement.d" \
-"new_movement.d" \
 "open_interface.d" \
 "ping.d" \
 "servo.d" \
@@ -104,7 +94,6 @@ C_DEPS__QUOTED += \
 "uart_extra_help.d" 
 
 C_SRCS__QUOTED += \
-"../Lab10_movement.c" \
 "../Our_Functions.c" \
 "../Timer.c" \
 "../adc.c" \
@@ -113,7 +102,6 @@ C_SRCS__QUOTED += \
 "../lcd.c" \
 "../main.c" \
 "../movement.c" \
-"../new_movement.c" \
 "../open_interface.c" \
 "../ping.c" \
 "../servo.c" \
