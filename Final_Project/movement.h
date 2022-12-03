@@ -10,6 +10,8 @@
 
 extern volatile double dist_travelled; //distance since last scan
 
+void TapeDrive(oi_t *sensor); // Function incomplete, should be similar to perp2edge in main, but with different scanning attributes.
+void Perp2Hole(oi_t *sensor);
 void move_forward(oi_t *sensor, int centimeters);
 void move_backward(oi_t *sensor, int centimeters);
 void turn_clockwise(oi_t *sensor, float degrees);

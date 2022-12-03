@@ -14,4 +14,6 @@ void ping_interrupt_handler(void);
 
 float ping_dist_est();
 
+int ping_read();
+
 #endif /*PING_H*/

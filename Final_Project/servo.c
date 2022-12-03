@@ -1,6 +1,7 @@
 #include <inc/tm4c123gh6pm.h>
 #include "Timer.h"
 #include "servo.h"
+#include "ping.h"
 
 unsigned int Val_180 = 37355; // Cybot 7
 unsigned int Val_0 = 7881; //Cybot 7
