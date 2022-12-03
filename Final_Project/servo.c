@@ -63,12 +63,12 @@ void servo_rotate(int angle){
 }
 
 
-data *ScanVals(int startAngle, int endAngle)
+scan_data *ScanVals(int startAngle, int endAngle)
 {
     int i = 0, j, sum = 0;
     int angle;
     int IR_dist;
-    static data dataarray[91];
+    static scan_data dataarray[91];
     int IRscans = 10;
 
     for(angle = startAngle; angle <= endAngle; angle += 2)

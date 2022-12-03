@@ -16,7 +16,7 @@ typedef struct{
     int structIRdistance;
     int structPingdistance;
     //Scanned data is assigned to a variable of this struct, there will 91 instaqnces to account for all scans.
-}data;
+}scan_data;
 
 void servo_init(void);
 
@@ -24,6 +24,6 @@ void servo_move(int degrees);
 
 void servo_rotate(int angle);
 
-data *ScanVals(int startAngle, int endAngle);
+scan_data *ScanVals(int startAngle, int endAngle);
 
 #endif //SERVO_H
