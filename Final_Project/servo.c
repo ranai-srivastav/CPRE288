@@ -2,6 +2,15 @@
 #include "Timer.h"
 #include "servo.h"
 
+unsigned int Val_180 = 37355; // Cybot 7
+unsigned int Val_0 = 7881; //Cybot 7
+unsigned int servo_period = 320000; // 20 ms
+extern volatile int edge;
+volatile unsigned int fallingedge;
+volatile unsigned int risingedge;
+int edgetime;
+
+
 void servo_init(void)
 {
 
@@ -30,15 +39,60 @@ void servo_init(void)
     TIMER1_CTL_R        |= 0b100000000;     //Re-Enable Timer1 B
 }
 
-void servo_move(int degree)
+void servo_rotate(int angle){
+    int clock_cycles;
+    //clock_cycles = round(((angle * (5.55555 * pow(10, -6))) + .001) * (16.0 * pow(10, 6)));
+    clock_cycles = round((((Val_180 - Val_0) / 180.0) * angle) + Val_0);
+    //int2char(clock_cycles);
+    //int2char(clock_cycles);
+
+    TIMER1_TBMATCHR_R = servo_period - clock_cycles; //total period - pulse width
+    TIMER1_TBPMR_R = ((servo_period - clock_cycles) >> 16);
+
+    //int2char((0x055F00 - clock_cycles));
+
+}
+
+
+scan_data_t *ScanVals(int startAngle, int endAngle)
 {
-    // calibrated to cybot02
-    int counts = 151.59 * degree + 284366;
+    int i = 0, j, sum = 0;
+    int angle;
+    int IR_dist;
+    static scan_data_t dataarray[91];
+    int IRscans = 10;
 
-    TIMER1_TBMATCHR_R = counts;
-    TIMER1_TBPMR_R = counts >> 16;
+    for(angle = startAngle; angle <= endAngle; angle += 2)
+    {
+        servo_rotate(angle);
+        //int2char(IR_dist);
+        timer_waitMillis(50);
+        for(j = 0; j < IRscans; j++){
+            sum += adc_read();
+        }
+        IR_dist = Raw2dist(sum / IRscans);
+        sum = 0;
+        dataarray[i].structIRdistance = IR_dist;
 
-    //TODO wait until move is complete
+        ping_read();
+        while(edge == 0){
+
+        }
+        risingedge = TIMER3_TBR_R;
+        while(edge == 1){
+
+        }
+        fallingedge = TIMER3_TBR_R;
+        edgetime = abs(fallingedge - risingedge);
+
+        dataarray[i].structPingdistance = (50 * 343.0 * edgetime) / (16 * pow(10,6));
+
+        dataarray[i].structangle = angle;
+
+        i += 1;
+    }
+    i = 0;
+    return dataarray;
 }
 
 

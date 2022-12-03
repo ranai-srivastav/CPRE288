@@ -21,7 +21,6 @@ C_SRCS += \
 ../ping.c \
 ../servo.c \
 ../state.c \
-../sweeter_main.c \
 ../tm4c123gh6pm_startup_ccs.c \
 ../uart_extra_help.c 
 
@@ -38,7 +37,6 @@ C_DEPS += \
 ./ping.d \
 ./servo.d \
 ./state.d \
-./sweeter_main.d \
 ./tm4c123gh6pm_startup_ccs.d \
 ./uart_extra_help.d 
 
@@ -55,7 +53,6 @@ OBJS += \
 ./ping.obj \
 ./servo.obj \
 ./state.obj \
-./sweeter_main.obj \
 ./tm4c123gh6pm_startup_ccs.obj \
 ./uart_extra_help.obj 
 
@@ -72,7 +69,6 @@ OBJS__QUOTED += \
 "ping.obj" \
 "servo.obj" \
 "state.obj" \
-"sweeter_main.obj" \
 "tm4c123gh6pm_startup_ccs.obj" \
 "uart_extra_help.obj" 
 
@@ -89,7 +85,6 @@ C_DEPS__QUOTED += \
 "ping.d" \
 "servo.d" \
 "state.d" \
-"sweeter_main.d" \
 "tm4c123gh6pm_startup_ccs.d" \
 "uart_extra_help.d" 
 
@@ -106,7 +101,6 @@ C_SRCS__QUOTED += \
 "../ping.c" \
 "../servo.c" \
 "../state.c" \
-"../sweeter_main.c" \
 "../tm4c123gh6pm_startup_ccs.c" \
 "../uart_extra_help.c" 
 

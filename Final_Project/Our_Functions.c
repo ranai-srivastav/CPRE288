@@ -56,6 +56,117 @@ int Raw2dist(int IR_val){
 
 }
 
+//void random()
+//{
+//    int objectnum = 0;
+//                for(i = 5; i <= 90; i++){
+//                    if(dataarray[i].structIRdistance <= 80 && on == 0){
+//                        objects[objectnum].startAngle = dataarray[i].structangle;
+//                        objects[objectnum].distAtObject = dataarray[i].structIRdistance;
+//                        on = 1;
+//                    }
+//                    else if(dataarray[i].structIRdistance >= 80 && on == 1){
+//                        objects[objectnum].endAngle = dataarray[i].structangle;
+//                        on = 0;
+//                        objectnum ++;
+//                    }
+//                    // This for loop checks for object conditions and will turn on when an object is closer than 50 cm...
+//                    // ... it will turn off when those conditions are no longer satisfied, and assign the objects to objects struct
+//                }
+//
+//
+//               // while(cyBot_getByte() != 'm'){
+//
+//                //}
+//
+//                for(i = 0; i < strlen(banner2); i++){
+//                        cyBot_sendByte(banner2[i]);
+//                }
+//                cyBot_sendByte('\n');
+//                cyBot_sendByte('\r');
+//
+//                for(i = 0; i < objectnum; i++){
+//                    //objects[i].linWidth = (2 * objects[i].distAtObject) * sin(objects[i].startAngle / 2);
+//                    int2char(i);
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    int2char(objects[i].startAngle);
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    int2char(objects[i].distAtObject);
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    cyBot_sendByte(' ');
+//                    int2char(abs(objects[i].startAngle - objects[i].endAngle));
+//                    cyBot_sendByte('\n');
+//                    cyBot_sendByte('\r');
+//                }
+//
+//                int smallestWidth = 1000;
+//                int object2Point;
+//
+//                for(i = 0; i < objectnum; i++){
+//                    if(abs(objects[i].startAngle - objects[i].endAngle) < smallestWidth && abs(objects[i].startAngle - objects[i].endAngle) > 6){
+//                        smallestWidth = abs(objects[i].startAngle - objects[i].endAngle);
+//                        object2Point = i;
+//                    }
+//                }
+//
+//                int turnangle = (objects[object2Point].startAngle + objects[object2Point].endAngle) / 2;
+//                // sets the angle that the scanner will rotate to.
+//                cyBOT_Scan(turnangle, &Scanner);
+//                timer_waitMillis(300);
+//
+//
+//                //distance2go = objects[object2Point].distAtObject;
+//
+//                distance2go = Scanner.sound_dist;
+//                trigAngle = (180.0 / M_PI) * atan(
+//                        (10.0 + ((distance2go + 5.0) * (sin(turnangle * (M_PI / 180.0)))))
+//                        /
+//                        (((distance2go + 5.0) * (cos(turnangle * (M_PI / 180.0))))));
+//
+//                robotDistance =
+//                        (10.0 + ((distance2go + 5.0) * (sin(turnangle * (M_PI / 180.0)))))
+//                        /
+//                        (sin(trigAngle * (M_PI / 180.0)));
+//                robotDistance -= 18;
+//               // printf("%d", robotDistance);
+//
+//                if(trigAngle <= 0){
+//                    trigAngle += 180;
+//                }
+//
+//                angle2turn = turnangle; //gives us a target angle corresponding to the center of the smallest width object
+//                oi_update(sensor_data);
+//                currentAngle = 90;
+//                distanceGone = 0;
+//
+//                distance2go -= 10;
+//                //previous 3 lines reposition the bot to "0,0" and update sensor for future deltas
+//
+//                if(bumpevent == 1){
+//                    inputChar = 'r';
+//                    bumpevent = 0;
+//                }
+//          }
+//}
+
 /*
 int averagedIRdist(){
     int i = 0, sum = 0, distance;

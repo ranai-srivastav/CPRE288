@@ -8,7 +8,11 @@
 #ifndef STATE_H_
 #define STATE_H_
 
+#include "movement.h"
+#include "servo.h"
 
+extern volatile double dist_travelled;
+void perp_to_edge(oi_t *sensor);
 
 
 

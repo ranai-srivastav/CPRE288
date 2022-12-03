@@ -10,7 +10,6 @@
 "./ping.obj"
 "./servo.obj"
 "./state.obj"
-"./sweeter_main.obj"
 "./tm4c123gh6pm_startup_ccs.obj"
 "./uart_extra_help.obj"
 "../tm4c123gh6pm.cmd"

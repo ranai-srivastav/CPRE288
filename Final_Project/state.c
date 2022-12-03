@@ -11,7 +11,7 @@
 void perp_to_edge(oi_t *sensor)
 {
     int i;
-    scan_data *Scandata;
+    scan_data_t *Scandata;
     //double dist_travelled = 0;
     int Boundary_Detected = 0;
     int max_cm = 50;

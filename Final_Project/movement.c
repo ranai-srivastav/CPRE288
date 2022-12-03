@@ -1,7 +1,5 @@
 #include "movement.h"
 
-extern volatile double dist_travelled; //distance since last scan
-
 void move_forward(oi_t *sensor, int centimeters) {
     double sum = 0;
     oi_setWheels(forward_RWP, forward_LWP); // move forward; full speed

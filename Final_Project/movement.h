@@ -1,3 +1,6 @@
+#ifndef MOVEMENT_H_
+#define MOVEMENT_H_
+
 #include "lcd.h"
 #include "open_interface.h"
 #include "Timer.h"
@@ -5,8 +8,7 @@
 #include "uart_extra_help.h"
 #include "calibration.h"
 
-#ifndef MOVEMENT_H_
-#define MOVEMENT_H_
+extern volatile double dist_travelled; //distance since last scan
 
 void move_forward(oi_t *sensor, int centimeters);
 void move_backward(oi_t *sensor, int centimeters);
